@@ -49,7 +49,7 @@
 
 .form-label{
     font-size: 0.7rem;
-    color: var(--light);
+    color: var(--text);
 }
 .bg_container{
      background-color:rgb(254, 215, 160, 0.25)!important;
@@ -58,6 +58,7 @@
 .text_btn{
     font-size: 1.2rem;
 }
+
 
 a:link, a:visited{
     text-decoration: none;

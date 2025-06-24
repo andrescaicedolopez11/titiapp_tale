@@ -2,7 +2,7 @@
   <div class="d-flex flex-column min-vh-100">
     <NavBarEjercicios />
     <Header />
-     <InicioSesion />
+     <RegEstudiante />
     <main class="flex-fill">
       <router-view />
     </main>
@@ -14,6 +14,7 @@
 <script setup>
 import NavBarEjercicios from './components/NavBarEjercicios.vue'
 import Header from './components/Header.vue'
-import InicioSesion from './components/inicioSesion.vue'
+import RegEstudiante from './components/regEstudiante.vue'
+
 import Footer from './components/Footer.vue'
 </script>
