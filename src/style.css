@@ -4,6 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('@/assets/fonts/OpenDyslexic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 *{margin: 0%; font-family: 'Poppins', sans-serif;}
 :root {
     --primary: #9e7348;
@@ -41,6 +47,11 @@
     font-family: 'Burbank', sans-serif !important;
     font-size: 1.5rem;
 }
+.opendyslexic {
+    font-family: 'OpenDyslexic', sans-serif !important;
+    font-size: 2rem !important;
+}
+
 
 .seccion_titulo{
     color: var(--complementary);
@@ -56,11 +67,21 @@
     border: 0px !important;
 }
 .text_btn{
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
 }
 
 
 a:link, a:visited{
     text-decoration: none;
     color:var(--textcolor);
+}
+
+.btn_primario{
+    background-color: var(--complementary)!important;
+    color:var(--light)!important;
+    width: 50%!important; 
+}
+.btn_primario:hover{
+    background-color: var(--support)!important;
+    color: var(--light) !important;;
 }

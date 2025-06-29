@@ -88,7 +88,7 @@
           style="cursor: pointer;"
         >
           <input type="radio" :value="avatar" v-model="form.avatar" class="d-none" />
-          <img :src="avatar" :alt="'avatar' + index" class="user_image rounded-circle border-3 border_color mx-auto mt-1" />
+          <img :src="avatar" :alt="'avatar' + index" class="user_image rounded-circle border-3 border_color mx-auto mt-1" :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }" />
         </label>
       </div>
     </div>
@@ -196,7 +196,7 @@ const avatars = [
 
 }
 .user_image{
-    width: 50px; 
+    width: 50px;
     height: 50px; 
 }
 

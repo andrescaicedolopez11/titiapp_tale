@@ -10,17 +10,19 @@
     <form>
       <!-- Usuario -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="usuario" placeholder="Ingresa tu usuario">
+        <label class="form-label">Ingresa tu usuario</label>
+        <input type="text" class="form-control" id="usuario" placeholder="Ej. carlos12345">
       </div>
 
       <!-- Contraseña -->
       <div class="mb-3">
+         <label class="form-label">Ingresa tu constraseña</label>
         <input type="password" class="form-control" id="contrasena" placeholder="********">
       </div>
 
       <!-- Botón Ingresar -->
       <div class=" mt-4 d-flex justify-content-center">
-  <button class="btn btn_ingresar px-4 burbank text_btn">Ingresar</button>
+  <button class="btn btn_primario px-4 burbank text_btn">Ingresar</button>
 </div>
 
       <!-- Texto: recuperar contraseña -->
@@ -57,15 +59,7 @@
 <style scoped>
 
 
-.btn_ingresar{
-    background-color: var(--complementary);
-    color:var(--light);
-    width: 50%; 
-}
-.btn_ingresar:hover{
-    background-color: var(--support);
-    color:var(--light);
-}
+
 .btn_gmail{
     background-color: var(--primary);
     color:var(--light);

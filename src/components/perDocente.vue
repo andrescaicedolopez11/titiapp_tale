@@ -9,27 +9,32 @@
     <form>
       <!-- Nombres y Apellidos -->
       <div class="mb-3">
-        
-        <input type="text" class="form-control" id="nombreper" placeholder="Ingrese su nombre completo">
+        <label class="form-label">Nombre completo</label>
+        <input type="text" class="form-control" id="nombreper" placeholder="Ej. Carlos Pérez Gómez">
       </div>
 
       <!-- Cédula -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="cedulaper" placeholder="Ingrese su número de cédula">
+        <label class="form-label">Cédula de identidad</label>
+        <input type="text" class="form-control" id="cedulaper" placeholder="ej. 1723454321">
       </div>
 
       <!-- Correo -->
       <div class="mb-3">
-        <input type="email" class="form-control" id="correoper" placeholder="ejemplo@correo.com">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="correoper" placeholder="Ej. carlos@correo.com">
       </div>
 
       <!-- Unidad educativa -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="unidadper" placeholder="Unidad Educativa">
+         <label class="form-label">Unidad Educativa</label>
+        <input type="text" class="form-control" id="unidadper" placeholder="Ej. U.E. Nuevo Amanecer">
       </div>
 
       <!-- Provincia -->
       <div class="mb-3">
+        <label class="form-label">Provincia</label>
+
         <select class="form-select" id="provinciaper">
           <option selected disabled>Seleccione una provincia</option>
           <option>Azuay</option>
@@ -61,7 +66,8 @@
 
       <!-- Ciudad -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="ciudadper" placeholder="Ciudad">
+        <label class="form-label">Ciudad</label>
+        <input type="text" class="form-control" id="ciudadper" placeholder="Ej. Quito">
       </div>
 
       <!-- Subtítulo -->
@@ -71,19 +77,22 @@
 
       <!-- Usuario -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="usuarioper" placeholder="Nombre de usuario">
+        <label class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="usuarioper" placeholder="Ej. carlos12345">
       </div>
 
       <!-- Contraseña -->
       <div class="mb-4">
+        <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="contrasenaper" placeholder="********">
       </div>
+     
 
       <!-- Botones -->
       <div class="d-flex justify-content-center">
         <button type="button" class="btn burbank text_btn btn_borde m-2">Volver</button>
         <button type="button" class="btn burbank text_btn btn_borde m-2">Eliminar</button>
-        <button type="submit" class="btn burbank text_btn btn_relleno m-2">Registrarme</button>
+        <button type="submit" class="btn burbank text_btn btn_relleno m-2">Guardar</button>
       </div>
 
     </form>

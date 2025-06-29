@@ -9,27 +9,33 @@
     <form>
       <!-- Nombres y Apellidos -->
       <div class="mb-3">
-        
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo">
+        <label class="form-label">Nombres y apellido</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ej. Carlos Pérez Gómez">
       </div>
 
       <!-- Cédula -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="cedula" placeholder="Ingrese su número de cédula">
+       <label class="form-label">Cédula de identidad</label>
+        <input type="text" class="form-control" id="cedula" placeholder="Ej. 1745678904">
       </div>
 
       <!-- Correo -->
       <div class="mb-3">
-        <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+         <label class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="correo" placeholder="Ej. carlos@correo.com">
       </div>
 
       <!-- Unidad educativa -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="unidad" placeholder="Unidad Educativa">
+      <label class="form-label">Nombre de Unidad Educativa</label>
+
+        <input type="text" class="form-control" id="unidad" placeholder="Ej. U.E. Nuevo Amanecer">
       </div>
 
       <!-- Provincia -->
       <div class="mb-3">
+        <label class="form-label">Selecciona una provincia</label>
+
         <select class="form-select" id="provincia">
           <option selected disabled>Seleccione una provincia</option>
           <option>Azuay</option>
@@ -61,7 +67,8 @@
 
       <!-- Ciudad -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="ciudad" placeholder="Ciudad">
+        <label class="form-label">Ciudad</label>
+        <input type="text" class="form-control" id="ciudad" placeholder="Ej. Quito">
       </div>
 
       <!-- Subtítulo -->
@@ -71,12 +78,18 @@
 
       <!-- Usuario -->
       <div class="mb-3">
-        <input type="text" class="form-control" id="usuario" placeholder="Nombre de usuario">
+        <label class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="usuario" placeholder="Ej. carlos12345">
       </div>
 
       <!-- Contraseña -->
       <div class="mb-4">
+        <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="contrasena" placeholder="********">
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Verificar Contraseña</label>
+        <input type="password" class="form-control" id="contrasenaper" placeholder="********">
       </div>
 
       <!-- Botones -->

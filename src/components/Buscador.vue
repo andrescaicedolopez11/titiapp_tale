@@ -23,7 +23,7 @@
     <div class="col-12 col-md-1 text-center">
       <button type="button" class="btn btn_add center_icon">
         <span class="material-symbols-outlined">person_add</span>
-        <span class="burbank text_btn"> Añadir</span>
+        <span class="burbank text_btn"> Agregar</span>
       </button>
     </div>
 
