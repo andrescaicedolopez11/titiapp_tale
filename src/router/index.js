@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Importar todas las páginas
+// Importar todas las páginas necesarias
 import Home from '@/pages/Home.vue'
-
+import Sesion from '@/pages/Sesion.vue' 
 
 const routes = [
   { path: '/', component: Home },
-  //{ path: '/registro-docente', component: RegistroDocente },
-  
+  { path: '/Sesion', component: Sesion }, 
 ]
 
 const router = createRouter({
