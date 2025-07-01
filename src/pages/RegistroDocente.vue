@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar />
+    <NavBarLogOut/>
     <Header />
     <regDocente/> 
     <Footer />
@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar.vue'
+import NavBarLogOut from '@/components/NavBarLogOut.vue'
 import Header from '@/components/Header.vue'
 import regDocente from '@/components/regDocente.vue'
 import Footer from '@/components/Footer.vue'

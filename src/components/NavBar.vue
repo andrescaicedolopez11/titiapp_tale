@@ -13,7 +13,7 @@
         </button>
         <ul class="dropdown-menu">
           <li>
-            <a class="dropdown-item center_icon" href="#">
+            <a class="dropdown-item center_icon" href="#" @click.prevent="mostrarPerfil = true">
               <span class="material-symbols-outlined fs-6">settings</span>Perfil
             </a>
           </li>
@@ -30,12 +30,12 @@
           <li><hr class="dropdown-divider" /></li>
           <li>
             <a class="dropdown-item center_icon" href="#" @click.prevent="cerrarSesion">
-
               <span class="material-symbols-outlined fs-6">cancel</span>Cerrar sesión
             </a>
           </li>
         </ul>
       </div>
+
       <button
         class="navbar-toggler nav_items"
         type="button"
@@ -47,6 +47,7 @@
       >
         <span class="navbar-toggler-icon nav_items"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto btn_size_8">
           <a class="px-3 nav-link nav_items burbank" href="#">TALE</a>
@@ -55,15 +56,33 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal perfil docente -->
+    <div v-if="mostrarPerfil" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-auto-width" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <div class="d-flex">
+              <a class="dropdown-item center_icon" href="#" @click.prevent="mostrarPerfil = false">
+                <span class="material-symbols-outlined fs-4 ms-auto p-3">cancel</span>
+              </a>
+            </div>
+          </div>
+          <perDocente :nombre="nombreDocente" />
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import perDocente from '@/components/perDocente.vue'
 
 const router = useRouter()
 const nombreDocente = ref('Usuario')
+const mostrarPerfil = ref(false)
 
 onMounted(() => {
   const nombre = localStorage.getItem('nombreDocente')
@@ -102,9 +121,5 @@ const cerrarSesion = () => {
   align-items: center;
   gap: 8px;
 }
-.navbar-toggler.nav_items,
-.navbar-toggler-icon.nav_items {
-  border-color: var(--light);
-  background-color: var(--light);
-}
+
 </style>

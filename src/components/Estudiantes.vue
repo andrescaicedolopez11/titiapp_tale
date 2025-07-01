@@ -22,7 +22,7 @@
               <button type="button" class="btn btn_set">
                 <span class="material-symbols-outlined">troubleshoot</span>
               </button>
-              <button type="button" class="btn btn_set">
+              <button type="button" class="btn btn_set ">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
               <button type="button" class="btn btn_set">
@@ -92,6 +92,7 @@ onMounted(cargarEstudiantes)
 .btn_set {
   background-color: var(--textcolor);
   color: var(--light);
+  font-size: 0.1rem;
 }
 .btn_set:hover {
   background-color: var(--complementary);
@@ -113,4 +114,5 @@ onMounted(cargarEstudiantes)
 .border_color {
   border: solid 30px var(--complementary);
 }
+
 </style>

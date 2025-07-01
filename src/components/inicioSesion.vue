@@ -19,7 +19,9 @@
         </div>
 
         <div class="text-center mt-4 mb-3">
-          <a href="#" class="small">Recuperar mi <span class="vinculo_btn">contraseña</span></a>
+          <a href="#" class="small" @click.prevent="recuperarContrasena">
+            Recuperar mi <span class="vinculo_btn">contraseña</span>
+          </a>
         </div>
 
         <div class="mt-4 pb-4 d-flex justify-content-center">
@@ -30,7 +32,12 @@
         </div>
 
         <div class="text-center">
-          <span class="small">¿No tienes cuenta? <a href="#"><span class="vinculo_btn">Registrarme</span></a></span>
+          <span class="small">
+            ¿No tienes cuenta?
+            <a href="#" @click.prevent="irARegistro">
+              <span class="vinculo_btn">Registrarme</span>
+            </a>
+          </span>
         </div>
       </form>
     </div>
@@ -57,7 +64,7 @@ const validarUsuario = async () => {
 
     if (docenteValido) {
       localStorage.setItem('docente_id', docenteValido.id)
-      localStorage.setItem('nombreDocente', docenteValido.nombres) // 👈 se guarda el nombre
+      localStorage.setItem('nombreDocente', docenteValido.nombres)
       router.push('/Sesion')
     } else {
       alert('Usuario o contraseña incorrectos')
@@ -66,6 +73,14 @@ const validarUsuario = async () => {
     console.error('Error al validar usuario:', error)
     alert('Error de conexión con la API')
   }
+}
+
+const recuperarContrasena = () => {
+  alert('Sus datos de acceso se han enviado a su correo institucional.')
+}
+
+const irARegistro = () => {
+  router.push('/RegistroDocente')
 }
 </script>
 

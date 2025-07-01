@@ -85,3 +85,10 @@ a:link, a:visited{
     background-color: var(--support)!important;
     color: var(--light) !important;;
 }
+.modal-bg{
+  background-color: rgba(8,24,33,0.8) !important;
+  }
+  .modal-auto-width {
+  width: 50% !important;
+  max-width: 60% !important; 
+}
