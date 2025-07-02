@@ -4,87 +4,44 @@
       <form @submit.prevent="handleSubmit">
         <h4 class="text-center mb-4 burbank seccion_titulo">Registro del Estudiante</h4>
 
-        <div class="mb-3">
-          <label class="form-label">Nombres y apellidos</label>
-          <input v-model="form.nombres" type="text" class="form-control" placeholder="Ej. Juanita Pérez" />
+        <!-- Campos del formulario -->
+        <div class="mb-3" v-for="(label, key) in labels" :key="key">
+          <label class="form-label">{{ label }}</label>
+          <input v-model="form[key]" :type="key === 'fechaNacimiento' ? 'date' : 'text'" class="form-control" :placeholder="label" />
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Fecha de nacimiento</label>
-          <input v-model="form.fechaNacimiento" type="date" class="form-control" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Unidad Educativa</label>
-          <input v-model="form.unidadEducativa" type="text" class="form-control" placeholder="U.E. Nuevo Amanecer" />
-        </div>
-
+        <!-- Provincia -->
         <div class="mb-3">
           <label class="form-label">Provincia</label>
           <select v-model="form.provincia" class="form-select">
-            <option disabled selected>Seleccione una provincia</option>
+            <option disabled value="">Seleccione una provincia</option>
             <option v-for="prov in provincias" :key="prov" :value="prov">{{ prov }}</option>
           </select>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Ciudad</label>
-          <input v-model="form.ciudad" type="text" class="form-control" placeholder="Ej. Quito" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Género</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="Masculino" v-model="form.genero" id="genero-m">
-            <label class="form-check-label" for="genero-m">Masculino</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="Femenino" v-model="form.genero" id="genero-f">
-            <label class="form-check-label" for="genero-f">Femenino</label>
+        <!-- Género, lengua nativa, bilingüe (radio) -->
+        <div v-for="(grupo, key) in radios" :key="key" class="mb-3">
+          <label class="form-label">{{ grupo.label }}</label>
+          <div class="form-check" v-for="opcion in grupo.opciones" :key="opcion">
+            <input class="form-check-input" type="radio" :id="`${key}-${opcion}`" :value="opcion" v-model="form[key]">
+            <label class="form-check-label" :for="`${key}-${opcion}`">{{ opcion }}</label>
           </div>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">¿Su lengua nativa es español?</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="Sí" v-model="form.lenguaNativa" id="nativa-si">
-            <label class="form-check-label" for="nativa-si">Sí</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="No" v-model="form.lenguaNativa" id="nativa-no">
-            <label class="form-check-label" for="nativa-no">No</label>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">¿Es bilingüe?</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="Sí" v-model="form.bilingue" id="bilingue-si">
-            <label class="form-check-label" for="bilingue-si">Sí</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="No" v-model="form.bilingue" id="bilingue-no">
-            <label class="form-check-label" for="bilingue-no">No</label>
-          </div>
-        </div>
-
+        <!-- Avatar -->
         <div class="mb-4">
           <label class="form-label">Seleccione un avatar</label>
           <div class="d-flex flex-wrap gap-3">
-            <label
-              v-for="(avatar, index) in avatars"
-              :key="index"
-              :class="{ 'border-primary': form.avatar === avatar }"
-              style="cursor: pointer;"
-            >
+            <label v-for="(avatar, index) in avatars" :key="index" style="cursor: pointer;"
+                   :class="{ 'border-primary': form.avatar === avatar }">
               <input type="radio" :value="avatar" v-model="form.avatar" class="d-none" />
-              <img :src="avatar" :alt="'avatar' + index"
-                   class="user_image rounded-circle border-3 border_color mx-auto mt-1"
+              <img :src="avatar" class="user_image rounded-circle border-3 border_color mx-auto mt-1"
                    :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }" />
             </label>
           </div>
         </div>
 
+        <!-- Botón Registrar -->
         <div class="d-flex justify-content-center">
           <button type="submit" class="btn burbank text_btn btn_relleno m-2">Registrar</button>
         </div>
@@ -95,6 +52,9 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const form = reactive({
   nombres: '',
@@ -107,6 +67,19 @@ const form = reactive({
   bilingue: '',
   avatar: ''
 })
+
+const labels = {
+  nombres: 'Nombres y apellidos',
+  fechaNacimiento: 'Fecha de nacimiento',
+  unidadEducativa: 'Unidad Educativa',
+  ciudad: 'Ciudad'
+}
+
+const radios = {
+  genero: { label: 'Género', opciones: ['Masculino', 'Femenino'] },
+  lenguaNativa: { label: '¿Su lengua nativa es español?', opciones: ['Sí', 'No'] },
+  bilingue: { label: '¿Es bilingüe?', opciones: ['Sí', 'No'] }
+}
 
 const provincias = [
   'Azuay', 'Bolívar', 'Cañar', 'Carchi', 'Chimborazo', 'Cotopaxi', 'El Oro',
@@ -124,24 +97,38 @@ const avatars = [
   'https://titiapp.ec/tale/user_6.jpg'
 ]
 
-const limpiarFormulario = () => {
-  for (const key in form) {
-    form[key] = ''
-  }
-}
-
 const handleSubmit = () => {
   for (const key in form) {
     if (!form[key]) {
-      window.alert('Por favor, completa todos los campos del registro.')
+      window.alert('Por favor completa todos los campos.')
       return
     }
   }
 
+  const nuevo = {
+    id: Date.now(),
+    nombres: form.nombres,
+    fecha_nacimiento: form.fechaNacimiento,
+    institucion: form.unidadEducativa,
+    provincia: form.provincia,
+    ciudad: form.ciudad,
+    genero: form.genero,
+    lengua_nativa: form.lenguaNativa,
+    bilingue: form.bilingue,
+    avatar: form.avatar,
+    docente_id: localStorage.getItem('docente_id')
+  }
+
+  // Guardar temporalmente en localStorage
+  const almacenados = JSON.parse(localStorage.getItem('estudiantes_temporales') || '[]')
+  almacenados.push(nuevo)
+  localStorage.setItem('estudiantes_temporales', JSON.stringify(almacenados))
+
   window.alert('Estudiante registrado exitosamente.')
-  limpiarFormulario()
+  router.push('/Sesion')
 }
 </script>
+
 
 <style scoped>
 .btn_relleno {

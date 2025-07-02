@@ -19,35 +19,15 @@
               v-model="busqueda"
               @input="emitirBusqueda"
             />
-            
           </form>
         </div>
 
         <!-- Botón Añadir -->
         <div class="col-12 col-md-1 text-center">
-          <button type="button" class="btn btn_add center_icon" @click="mostrarModal = true">
+          <button type="button" class="btn btn_add center_icon" @click="irARegistro">
             <span class="material-symbols-outlined">person_add</span>
             <span class="burbank text_btn"> Agregar</span>
           </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div v-if="mostrarModal" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered modal-auto-width " role="document" >
-        <div class="modal-content p-0">
-          <div class=" text-end">
-            <div class="d-flex">
-              <a class="dropdown-item center_icon" href="#" @click.prevent="cerrarModal">
-               <span class="material-symbols-outlined fs-4 ms-auto p-3">cancel</span>
-               </a> 
-            </div>
-             
-              
-           
-          </div>
-          <regEstudiante />
         </div>
       </div>
     </div>
@@ -55,26 +35,19 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
-import regEstudiante from '@/components/regEstudiante.vue'
-
-const props = defineProps({
-  oculto: {
-    type: Boolean,
-    default: false
-  }
-})
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const busqueda = ref('')
 const emit = defineEmits(['buscar'])
+const router = useRouter()
 
 const emitirBusqueda = () => {
   emit('buscar', busqueda.value.trim().toLowerCase())
 }
 
-const mostrarModal = ref(false)
-const cerrarModal = () => {
-  mostrarModal.value = false
+const irARegistro = () => {
+  router.push('/RegistroEstudiante')
 }
 </script>
 

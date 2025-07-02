@@ -18,12 +18,12 @@
             </a>
           </li>
           <li>
-            <a class="dropdown-item center_icon" href="#">
+            <a class="dropdown-item center_icon" href="#" @click.prevent="mostrarNovedades = true">
               <span class="material-symbols-outlined fs-6">notifications</span>Novedades
             </a>
           </li>
           <li>
-            <a class="dropdown-item center_icon" href="#">
+            <a class="dropdown-item center_icon" href="#" @click.prevent="mostrarNotificaciones = true">
               <span class="material-symbols-outlined fs-6">mail</span>Notificaciones
             </a>
           </li>
@@ -50,14 +50,14 @@
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto btn_size_8">
-          <a class="px-3 nav-link nav_items burbank" href="#">TALE</a>
+          <a class="px-3 nav-link nav_items burbank" href="#" @click.prevent="mostrarTale = true">TALE</a>
           <a class="px-3 nav-link nav_items burbank" href="https://titiapp.ec/" target="_blank">TitíApp©</a>
-          <a class="px-3 nav-link nav_items burbank" href="">Ayuda</a>
+          <a class="px-3 nav-link nav_items burbank" href="#" @click.prevent="mostrarAyuda = true">Ayuda</a>
         </div>
       </div>
     </div>
 
-    <!-- Modal perfil docente -->
+    <!-- Modales -->
     <div v-if="mostrarPerfil" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered modal-auto-width" role="document">
         <div class="modal-content p-0">
@@ -72,6 +72,58 @@
         </div>
       </div>
     </div>
+
+    <div v-if="mostrarNovedades" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <button class="btn btn-sm btn-light m-2" @click="mostrarNovedades = false">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
+          <Novedades />
+        </div>
+      </div>
+    </div>
+
+    <div v-if="mostrarNotificaciones" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <button class="btn btn-sm btn-light m-2" @click="mostrarNotificaciones = false">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
+          <Notificaciones />
+        </div>
+      </div>
+    </div>
+
+    <div v-if="mostrarTale" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <button class="btn btn-sm btn-light m-2" @click="mostrarTale = false">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
+          <Tale />
+        </div>
+      </div>
+    </div>
+
+    <div v-if="mostrarAyuda" class="modal fade show d-block modal-bg" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <button class="btn btn-sm btn-light m-2" @click="mostrarAyuda = false">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
+          <Ayuda />
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -79,10 +131,18 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import perDocente from '@/components/perDocente.vue'
+import Novedades from '@/pages/Novedades.vue'
+import Notificaciones from '@/pages/Notificaciones.vue'
+import Tale from '@/pages/Tale.vue'
+import Ayuda from '@/pages/Ayuda.vue'
 
 const router = useRouter()
 const nombreDocente = ref('Usuario')
 const mostrarPerfil = ref(false)
+const mostrarNovedades = ref(false)
+const mostrarNotificaciones = ref(false)
+const mostrarTale = ref(false)
+const mostrarAyuda = ref(false)
 
 onMounted(() => {
   const nombre = localStorage.getItem('nombreDocente')
@@ -121,5 +181,4 @@ const cerrarSesion = () => {
   align-items: center;
   gap: 8px;
 }
-
 </style>

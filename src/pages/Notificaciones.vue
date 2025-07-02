@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <h1>Ejercicio de Letras</h1>
-  </div>
-</template>
 
+pagina de ayuda
+</template>
 <script setup>
 </script>
-
 <style scoped>
 </style>

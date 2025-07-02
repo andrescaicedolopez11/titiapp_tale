@@ -1,7 +1,7 @@
 <template>
   <div class="container my-5">
-    <Buscador @buscar="filtrarEstudiantes" /><!--Aquí se insertó el componente buscador-->
-    
+    <Buscador @buscar="filtrarEstudiantes" />
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
       <div
         class="col"
@@ -22,14 +22,43 @@
               <button type="button" class="btn btn_set">
                 <span class="material-symbols-outlined">troubleshoot</span>
               </button>
-              <button type="button" class="btn btn_set ">
+              <button type="button" class="btn btn_set">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
-              <button type="button" class="btn btn_set">
+              <button
+                type="button"
+                class="btn btn_set"
+                @click="abrirPerfil(estudiante.id)"
+              >
                 <span class="material-symbols-outlined">settings</span>
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Perfil Estudiante -->
+    <div
+      v-if="mostrarModal"
+      class="modal fade show d-block"
+      tabindex="-1"
+      style="background: rgba(0, 0, 0, 0.5);"
+      role="dialog"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content p-0">
+          <div class="text-end">
+            <button type="button" class="btn btn-sm btn-light m-2" @click="cerrarModal">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
+          <perEstudiante
+            v-if="mostrarModal"
+            :id="idSeleccionado"
+            @cerrar="mostrarModal = false"
+            @eliminado="eliminarEstudiante"
+          />
         </div>
       </div>
     </div>
@@ -40,9 +69,12 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import Buscador from '@/components/Buscador.vue'
+import perEstudiante from '@/components/perEstudiante.vue'
 
+const idSeleccionado = ref(null)
 const estudiantes = ref([])
 const estudiantesFiltrados = ref([])
+const mostrarModal = ref(false)
 
 const cargarEstudiantes = async () => {
   const docenteId = localStorage.getItem('docente_id')
@@ -50,7 +82,7 @@ const cargarEstudiantes = async () => {
 
   try {
     const res = await axios.get('https://mock.apidog.com/m1/983115-968659-default/estudiantes')
-    const data = res.data
+    const dataApi = res.data
       .filter(e => e.docente_id == docenteId)
       .map(e => {
         const nombreArchivo = e.avatar.split('/').pop()
@@ -60,8 +92,11 @@ const cargarEstudiantes = async () => {
         }
       })
 
-    estudiantes.value = data
-    estudiantesFiltrados.value = data
+    const temporales = JSON.parse(localStorage.getItem('estudiantes_temporales') || '[]')
+      .filter(e => e.docente_id == docenteId)
+
+    estudiantes.value = [...dataApi, ...temporales]
+    estudiantesFiltrados.value = estudiantes.value
   } catch (error) {
     console.error('Error al cargar estudiantes:', error)
   }
@@ -83,6 +118,23 @@ const filtrarEstudiantes = (termino) => {
   estudiantesFiltrados.value = estudiantes.value.filter(est =>
     est.nombres.toLowerCase().includes(terminoNormalizado)
   )
+}
+
+const abrirPerfil = (id) => {
+  idSeleccionado.value = id
+  mostrarModal.value = true
+}
+
+const eliminarEstudiante = (id) => {
+  estudiantes.value = estudiantes.value.filter(e => e.id !== id)
+  estudiantesFiltrados.value = estudiantesFiltrados.value.filter(e => e.id !== id)
+
+  const actualizados = estudiantes.value.filter(e => e.id.toString().startsWith('1'))
+  localStorage.setItem('estudiantes_temporales', JSON.stringify(actualizados))
+}
+
+const cerrarModal = () => {
+  mostrarModal.value = false
 }
 
 onMounted(cargarEstudiantes)
@@ -114,5 +166,4 @@ onMounted(cargarEstudiantes)
 .border_color {
   border: solid 30px var(--complementary);
 }
-
 </style>
