@@ -4,6 +4,7 @@
     <Letras/> 
     <Footer />
   </div>
+  
 </template>
 
 <script setup>

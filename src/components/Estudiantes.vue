@@ -19,24 +19,25 @@
             <p class="card-text">{{ calcularEdad(estudiante.fecha_nacimiento) }} años</p>
             <p class="card-text name_school">{{ estudiante.institucion }}</p>
             <div class="d-flex justify-content-center gap-3 mt-3">
-              <button type="button" class="btn btn_set">
+              <button type="button" class="btn btn_set" @click="irAIndicaciones">
                 <span class="material-symbols-outlined">troubleshoot</span>
               </button>
               <button type="button" class="btn btn_set">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
-              <button
-                type="button"
-                class="btn btn_set"
-                @click="abrirPerfil(estudiante.id)"
-              >
+              <button type="button" class="btn btn_set" @click="abrirPerfil(estudiante.id)">
                 <span class="material-symbols-outlined">settings</span>
               </button>
             </div>
           </div>
+          
         </div>
+        
       </div>
+          
+
     </div>
+      <p class="margin_bottom">&NonBreakingSpace;</p>
 
     <!-- Modal de Perfil Estudiante -->
     <div
@@ -53,28 +54,31 @@
               <span class="material-symbols-outlined">cancel</span>
             </button>
           </div>
-          <perEstudiante
-            v-if="mostrarModal"
-            :id="idSeleccionado"
-            @cerrar="mostrarModal = false"
-            @eliminado="eliminarEstudiante"
+          <perEstudiante v-if="mostrarModal" :id="idSeleccionado" @cerrar="mostrarModal = false" @eliminado="eliminarEstudiante"
           />
         </div>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Buscador from '@/components/Buscador.vue'
 import perEstudiante from '@/components/perEstudiante.vue'
 
+const router = useRouter()
 const idSeleccionado = ref(null)
 const estudiantes = ref([])
 const estudiantesFiltrados = ref([])
 const mostrarModal = ref(false)
+
+const irAIndicaciones = () => {
+  router.push('/Indicaciones')
+}
 
 const cargarEstudiantes = async () => {
   const docenteId = localStorage.getItem('docente_id')

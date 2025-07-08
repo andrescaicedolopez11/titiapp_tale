@@ -1,14 +1,14 @@
 <template>
   <div>
-    <!-- Contenido del formulario de registro docente irá aquí -->
-    <h1>Registro Docente</h1>
+    <NavBarEjercicios/>
+    <Silabas/> 
+    <Footer />
   </div>
+  
 </template>
 
 <script setup>
-// Puedes importar componentes aquí o manejar lógica
+import NavBarEjercicios from '@/components/NavBarEjercicios.vue'
+import Silabas from '@/components/Silabas.vue'
+import Footer from '@/components/Footer.vue'
 </script>
-
-<style scoped>
-/* Estilos opcionales */
-</style>

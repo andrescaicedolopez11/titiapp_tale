@@ -3,13 +3,15 @@
  <nav class="navbar navbar-expand-lg nav_bg">
   <div class="container-fluid">
 
-    <img src="@/assets/logotitiapp.svg" alt="Logo TitíApp" class="img-fluid pt-3 mb-3" style="max-height: 60px;">
+    <img src="@/assets/logotitiapp.svg" alt="Logo TitíApp" class="img-fluid pt-2 mb-1 icon-size" >
     <h3 class="header3 pt-3 ms-3">TitíApp© - Diagnóstico</h3>   
   
       
     
         <div class="navbar-nav ms-auto btn_size_8">
-              <h3 class="header4 pt-3 me-4">Ejercicio 1 de 10</h3>   
+             <h3 class="header4 pt-3 me-4">
+  Ejercicio {{ store.ejercicioActual + 1 }} de {{ store.ejerciciosTotales }}
+</h3>
 
         </div>
       
@@ -18,9 +20,14 @@
 </template>
 <!-- aquí va la programación js del componente -->
 <script setup>
+import { useEvaluacionStore } from '@/stores/evaluacionStore'
+const store = useEvaluacionStore()
 </script>
 <!-- aquí van los estilos del componente -->
 <style scoped>
+.icon-size{
+  width: 2.2rem;
+}
 .btn_user{
   color: var(--secondary);
 }
@@ -42,7 +49,7 @@
     display: flex;
     justify-content:left;
     align-items: center;
-    gap: 8px; /* espacio entre icono y texto */
+    gap: 8px; 
   }
 .navbar-toggler.nav_items, .navbar-toggler-icon.nav_items{
    border-color: var(--light);

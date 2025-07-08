@@ -43,7 +43,8 @@
 
         <!-- Botón Registrar -->
         <div class="d-flex justify-content-center">
-          <button type="submit" class="btn burbank text_btn btn_relleno m-2">Registrar</button>
+        <button type="button" class="btn burbank text_btn btn_borde m-2" @click="volverInicio">Volver</button>
+        <button type="submit" class="btn btn_primario m-2">Registrar</button>
         </div>
       </form>
     </div>
@@ -54,8 +55,13 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
+
+
 const router = useRouter()
 
+const volverInicio = () => {
+  router.push('/Sesion')
+}
 const form = reactive({
   nombres: '',
   fechaNacimiento: '',

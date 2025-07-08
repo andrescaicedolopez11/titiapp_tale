@@ -58,8 +58,9 @@
         </div>
 
         <div class="d-flex justify-content-center">
+          
           <button type="button" class="btn burbank text_btn btn_borde m-2" @click="volverInicio">Volver</button>
-          <button type="submit" class="btn burbank text_btn btn_relleno m-2">Registrarme</button>
+          <button type="submit" class="btn btn_primario m-2">Registrarme</button>
         </div>
       </form>
     </div>
@@ -107,10 +108,9 @@ const registrarDocente = () => {
     alert('Las contraseñas no coinciden.')
     return
   }
-
   alert('Registro exitoso. Sus datos han sido guardados.')
 
-  // Limpiar campos
+  // con este código se está limpiando los campos del formulario
   nombre.value = ''
   cedula.value = ''
   correo.value = ''

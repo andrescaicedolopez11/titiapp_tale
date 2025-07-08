@@ -3,7 +3,7 @@
  <nav class="navbar navbar-expand-lg nav_bg">
   <div class="container-fluid">
 
-    <img src="@/assets/logotitiapp.svg" alt="Logo TitíApp" class="img-fluid pt-3 mb-3" style="max-height: 60px;">
+    <img src="@/assets/logotitiapp.svg" alt="Logo TitíApp" class="img-fluid pt-2 mb-1 icon-size" >
     <h3 class="header3 pt-3 ms-3">TitíApp© - Diagnóstico</h3>   
   
       <button class="navbar-toggler nav_items" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,9 +11,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto btn_size_8">
-          <a class="px-3 nav-link nav_items burbank" href="#">TALE</a>
-          <a class="px-3 nav-link nav_items burbank" href="https://titiapp.ec/" target="_blank">TitíApp©</a>
-          <a class="px-3 nav-link nav_items burbank" href="#">Ayuda</a>
+          <router-link to="/Sesion">
+            <span class="px-3 nav-link nav_items burbank">Estudiantes</span>
+          </router-link>
+          
+          
         </div>
       </div>
     </div>
@@ -24,6 +26,9 @@
 </script>
 <!-- aquí van los estilos del componente -->
 <style scoped>
+.icon-size{
+  width: 2.2rem;
+}
 .btn_user{
   color: var(--secondary);
 }
@@ -33,7 +38,7 @@
 }
 .nav_items{
   color: var(--light);
-  padding:10px;
+  
 }
 .nav_items:hover{
   color: var(--complementary); 

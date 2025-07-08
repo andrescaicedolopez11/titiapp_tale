@@ -45,16 +45,27 @@
 </div>
 
     <!-- Botón iniciar -->
-    <div class="text-center mt-5">
-              <button type="submit" class="btn burbank text_btn btn_relleno m-2">Iniciar</button>
-
+    <div class="text-center mt-5 my-1">
+       <button type="submit" class="btn btn_primario btn_width" @click="irAEjercicios">Iniciar</button>
     </div>
   </div>
 </template>
 
 <script setup>
-// Este componente no requiere lógica aún, pero puedes usar emits para el botón si lo deseas
+import { useRouter } from 'vue-router'
+import { useEvaluacionStore } from '@/stores/evaluacionStore'
+
+const router = useRouter()
+const evaluacion = useEvaluacionStore()
+
+const irAEjercicios = () => {
+  evaluacion.iniciarEvaluacion()
+  router.push('/EjercicioLetras')
+}
 </script>
+
+
+
 
 <style scoped>
 .altura {
@@ -69,19 +80,11 @@
 .card {
   border-radius: 1rem;
   background-color: #f8f9fa;
-  transition: transform 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
 }
 
-.btn_relleno{
-    background-color: var(--complementary);
-    color:var(--light);
-    width: 20%; 
-}
-.btn_relleno:hover{
-    background-color: var(--support);
-    color:var(--light);
+
+.btn_width{
+  width: 20% !important;
+
 }
 </style>

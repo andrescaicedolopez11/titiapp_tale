@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h1>Ejercicio de Letras</h1>
+    <NavBarEjercicios/>
+    <Palabras/> 
+    <Footer />
   </div>
+  
 </template>
 
 <script setup>
+import NavBarEjercicios from '@/components/NavBarEjercicios.vue'
+import Palabras from '@/components/Palabras.vue'
+import Footer from '@/components/Footer.vue'
 </script>
-
-<style scoped>
-</style>

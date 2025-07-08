@@ -89,9 +89,8 @@
 
         <!-- Botones -->
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn burbank text_btn btn_borde m-2" @click="volver">Volver</button>
           <button type="button" class="btn burbank text_btn btn_borde m-2" @click="eliminar">Eliminar</button>
-          <button type="submit" class="btn burbank text_btn btn_relleno m-2">Guardar</button>
+          <button type="submit" class="btn btn_primario m-2">Guardar</button>
         </div>
       </form>
     </div>

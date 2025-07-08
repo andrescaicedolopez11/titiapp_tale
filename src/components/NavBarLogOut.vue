@@ -8,9 +8,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto btn_size_8">
-          <a class="px-3 nav-link nav_items burbank" href="#">TALE</a>
+        
+         
           <a class="px-3 nav-link nav_items burbank" href="https://titiapp.ec/" target="_blank">TitíApp©</a>
-          <a class="px-3 nav-link nav_items burbank" href="#">Ayuda</a>
+          
+          
         </div>
       </div>
     </div>

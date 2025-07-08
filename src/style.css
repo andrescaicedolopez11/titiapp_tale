@@ -18,7 +18,37 @@
     --textcolor:#071922;
     --support:#869f5c;
     --light:#fff;  
+    --error:#ff0002;
+    --alert:#ff8900;
+    --confirm:#00d95b;
+    --info:#006ddf;
   }
+  html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 4px; 
+  border-radius: 0px ;
+	 background: var(--secondary);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:var(--complementary);
+}
+
 .header1 {
   font-size: 1.5rem;
     font-weight:600;
@@ -46,6 +76,10 @@
 .burbank {
     font-family: 'Burbank', sans-serif !important;
     font-size: 1.5rem;
+}
+
+.margin_bottom{
+    margin-bottom: 4rem;
 }
 .opendyslexic {
     font-family: 'OpenDyslexic', sans-serif !important;
@@ -80,10 +114,13 @@ a:link, a:visited{
     background-color: var(--complementary)!important;
     color:var(--light)!important;
     width: 50%!important; 
+    font-family: 'Burbank', sans-serif !important;
+    font-size: 1.2rem !important;
 }
 .btn_primario:hover{
-    background-color: var(--support)!important;
-    color: var(--light) !important;;
+    background-color: var(--light)!important;
+    border: 1px solid var(--complementary)!important;
+    color: var(--complementary) !important;;
 }
 .modal-bg{
   background-color: rgba(8,24,33,0.8) !important;
@@ -91,4 +128,57 @@ a:link, a:visited{
   .modal-auto-width {
   width: 50% !important;
   max-width: 60% !important; 
+}
+.primary-color {
+  color: var(--primary) !important;
+}
+.secondary-color {
+  color: var(--secondary) !important;
+}
+.complementary-color {
+  color: var(--complementary) !important;
+}
+.textcolor-color {
+  color: var(--textcolor) !important;
+}          
+.support-color {
+  color: var(--support) !important;
+}          
+.error-color {
+  color: var(--error) !important;
+}
+.alert-color {
+  color: var(--alert) !important;
+}
+.confirm-color {
+  color: var(--confirm) !important;
+}
+.info-color {
+  color: var(--info) !important;
+}
+.instruccion{
+  font-family: 'OpenDyslexic';
+  font-size: 5rem !important;
+}
+.ejercicio-box {
+  width: 5rem;
+  height: 5rem;
+  border: 0.05rem solid var(--textcolor);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: white;
+  transition: background-color 0.2s ease;
+  font-family: OpenDyslexic, sans-serif;
+  border-radius: 0.2rem;
+  padding: 1rem;
+}
+
+.ejercicio-box:hover {
+  background-color: rgb(254, 215, 160, 0.50) !important;
 }

@@ -5,23 +5,19 @@
 
     <!-- Ícono de audio -->
     <div class="mb-4">
-      <span class="material-symbols-outlined fs-2 seccion_titulo" style="cursor: pointer;">
+      <span class="material-symbols-outlined fs-2 seccion_titulo" style="cursor: pointer;" @click="reproducirAudio">
         volume_up
       </span>
     </div>
 
     <!-- Texto de instrucción -->
-    <p class="fs-5">
-      Selecciona la letra <strong class="fs-4 text-dark">{{ letraObjetivo }}</strong>
+    <p class="fs-5 py-2 pb-5">
+      Selecciona la letra <strong class="fs-3 border pt-0 ps-3 pe-3 text-dark instruccion">{{ letraObjetivo }}</strong>
     </p>
 
     <!-- Cuadrícula de letras -->
     <div class="grid-container mt-4">
-      <div
-        v-for="(letra, index) in letrasAleatorias"
-        :key="index"
-        class="letra-box"
-      >
+      <div v-for="(letra, index) in letrasAleatorias" :key="index" class="ejercicio-box" @click="evaluar(letra)">
         {{ letra }}
       </div>
     </div>
@@ -30,17 +26,26 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useEvaluacionStore } from '@/stores/evaluacionStore'
 
-// Genera letras de la A a la Z
+const router = useRouter()
+const store = useEvaluacionStore()
+
 const alfabeto = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
-// Número de letras que se mostrarán en la cuadrícula
-const cantidad = 16
-
+const cantidad = 15
 const letrasAleatorias = ref([])
 const letraObjetivo = ref('')
+const ejerciciosRealizados = ref(0)
+const maxEjercicios = 3
 
-// Función para obtener letras aleatorias sin repetirse
+import audioLetras from '@/assets/audio/audio_letras.mp3'
+
+const audio = new Audio(audioLetras)
+const reproducirAudio = () => {
+  audio.play()
+}
+
 const generarLetrasAleatorias = () => {
   const copia = [...alfabeto]
   const resultado = []
@@ -54,39 +59,34 @@ const generarLetrasAleatorias = () => {
   letraObjetivo.value = resultado[Math.floor(Math.random() * resultado.length)]
 }
 
+const evaluar = (seleccion) => {
+  if (seleccion === letraObjetivo.value) {
+    store.registrarAcierto()
+  } else {
+    store.registrarError()
+  }
+
+  ejerciciosRealizados.value++
+
+  if (ejerciciosRealizados.value < maxEjercicios) {
+    generarLetrasAleatorias()
+  } else {
+    
+    router.push('/EjercicioSilabas')
+  }
+}
+
 onMounted(() => {
   generarLetrasAleatorias()
 })
 </script>
 
 <style scoped>
-
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 70px);
-  grid-gap: 20px;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 1.4rem;
   justify-content: center;
-}
-
-.letra-box {
-  width: 70px;
-  height: 70px;
-  border: 1px solid var(--textcolor);
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
-  background-color: white;
-  transition: background-color 0.2s ease;
-  font-family: OpenDyslexic, sans-serif;
-}
-
-.letra-box:hover {
-     background-color:rgb(254, 215, 160, 0.25)!important;
 }
 
 

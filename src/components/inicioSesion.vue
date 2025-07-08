@@ -34,14 +34,19 @@
         <div class="text-center">
           <span class="small">
             ¿No tienes cuenta?
-            <a href="#" @click.prevent="irARegistro">
+            <router-link to="/RegistroDocente">
               <span class="vinculo_btn">Registrarme</span>
-            </a>
+            </router-link>
+        
           </span>
         </div>
+         <p class="margin_bottom">&NonBreakingSpace;</p>
       </form>
     </div>
+    
   </div>
+  
+   
 </template>
 
 <script setup>
@@ -79,9 +84,7 @@ const recuperarContrasena = () => {
   alert('Sus datos de acceso se han enviado a su correo institucional.')
 }
 
-const irARegistro = () => {
-  router.push('/RegistroDocente')
-}
+
 </script>
 
 <style scoped>
