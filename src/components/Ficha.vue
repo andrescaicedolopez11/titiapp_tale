@@ -2,8 +2,12 @@
   <div class="container  p-4 ">
     <div class="text-center">
             <h4 class="text-center mb-4 burbank seccion_titulo">Ficha de evaluación del estudiante</h4>
+     <img
+            :src="estudiante.avatar"
+            alt="Imagen de perfil de usuario"
+            class="user_image rounded-circle border-3 border_color mx-auto d-block mt-3"
+          />
 
-     <img :src="estudiante.avatar" alt="Imagen de perfil de usuario" class="user_image rounded-circle border-3 border_color mx-auto d-block "/>
       <p class="pt-4"><strong>Fecha:</strong> {{ fecha }}</p>
       <p><strong>Estudiante:</strong> {{ estudiante.nombres }}</p>
       <p><strong>Unidad educativa:</strong> {{ estudiante.institucion }}</p>
@@ -13,7 +17,7 @@
 
       <div class="border rounded p-3 mt-4 w-100 mx-auto" :class="colorEvaluacion">
         <p class="mb-1"><strong>Calificación:</strong> {{ estudiante.evaluacion }} aciertos</p>
-        <p class="mb-0"><strong>Valoración:</strong> {{ mensajeEvaluacion }}</p>
+        <p class="mb-0 burbank">{{ mensajeEvaluacion }}</p>
       </div>
     </div>
   </div>

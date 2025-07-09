@@ -20,10 +20,10 @@
             <p class="card-text name_school">{{ estudiante.institucion }}</p>
             <div class="d-flex justify-content-center gap-3 mt-3">
               <button type="button" class="btn btn_set" @click="irAIndicaciones(estudiante)">
-  <span class="material-symbols-outlined">troubleshoot</span>
-</button>
+                <span class="material-symbols-outlined">troubleshoot</span>
+              </button>
 
-              <button type="button" class="btn btn_set" @click="abrirFicha(estudiante.id)">
+              <button type="button" class="btn btn_set" @click="abrirFicha(estudiante)">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
               <button type="button" class="btn btn_set" @click="abrirPerfil(estudiante.id)">
@@ -31,19 +31,17 @@
               </button>
             </div>
           </div>
-          
         </div>
-        
       </div>
-          
-
     </div>
-      <p class="margin_bottom">&NonBreakingSpace;</p>
+    <p class="margin_bottom">&NonBreakingSpace;</p>
 
     <!-- Modal de Perfil Estudiante -->
     <div
-      v-if="mostrarModal" class="modal fade show d-block" tabindex="-1"
-style="background: rgba(0, 0, 0, 0.5);"
+      v-if="mostrarModal"
+      class="modal fade show d-block"
+      tabindex="-1"
+      style="background: rgba(0, 0, 0, 0.5);"
       role="dialog"
     >
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -53,33 +51,38 @@ style="background: rgba(0, 0, 0, 0.5);"
               <span class="material-symbols-outlined">cancel</span>
             </button>
           </div>
-          <perEstudiante v-if="mostrarModal" :id="idSeleccionado" @cerrar="mostrarModal = false" @eliminado="eliminarEstudiante"
-          />
+          <component :is="modalComponent" v-if="modalComponent" :id="idSeleccionado" @cerrar="cerrarModal" @eliminado="eliminarEstudiante" />
         </div>
       </div>
-      
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Buscador from '@/components/Buscador.vue'
 import perEstudiante from '@/components/perEstudiante.vue'
+import FichaEstudiante from '@/pages/FichaEstudiante.vue'
 
 const router = useRouter()
 const idSeleccionado = ref(null)
 const estudiantes = ref([])
 const estudiantesFiltrados = ref([])
 const mostrarModal = ref(false)
+const modalComponent = shallowRef(null)
 
 const irAIndicaciones = (estudiante) => {
   localStorage.setItem('nombreEstudiante', estudiante.nombres)
   router.push('/Indicaciones')
 }
 
+const abrirFicha = (estudiante) => {
+  localStorage.setItem('estudianteSeleccionado', JSON.stringify(estudiante))
+  modalComponent.value = FichaEstudiante
+  mostrarModal.value = true
+}
 
 const cargarEstudiantes = async () => {
   const docenteId = localStorage.getItem('docente_id')
@@ -127,6 +130,7 @@ const filtrarEstudiantes = (termino) => {
 
 const abrirPerfil = (id) => {
   idSeleccionado.value = id
+  modalComponent.value = perEstudiante
   mostrarModal.value = true
 }
 
@@ -140,6 +144,7 @@ const eliminarEstudiante = (id) => {
 
 const cerrarModal = () => {
   mostrarModal.value = false
+  modalComponent.value = null
 }
 
 onMounted(cargarEstudiantes)

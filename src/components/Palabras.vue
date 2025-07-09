@@ -20,6 +20,7 @@
         {{ palabra }}
       </div>
     </div>
+    <p class="fs-5 mt-4">&nbsp;</p> 
   </div>
 </template>
 
