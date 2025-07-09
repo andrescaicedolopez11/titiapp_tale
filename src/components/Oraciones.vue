@@ -46,24 +46,24 @@ const reproducirAudio = () => {
 
 const ejercicios = [
   {
-    oracion: 'Mario salió de paseo con sus padres y hermanos. Caminaron por la calle y por la plaza. Subieron a un autobús  para ir mucho más lejos. Por la ventana, Mario mira el paisaje y pregunta a sus papás lo que no sabe.',
+    oracion: 'Esa hilera de puntitos negros y movedizos son hormigas. Están muy atareadas. Tienen que aprovechar el verano y recoger provisiones para los días tan oscuros del invierno. En verano recogen toda la comida que pueden y la meten en su nido.',
     opciones: [
-      { texto: 'Mario salió de paaseo ocn sus padres y hermanos.', esCorrecta: true },
-      { texto: 'El parque estaba muy lejos de su casa.', esCorrecta: false }
+      { texto: 'Las hormigas están muy atareadas recogiendo provisiones durante el verano para el invierno.', esCorrecta: true },
+      { texto: 'Las hormigas forman una hilera de puntitos negros y movedizos.', esCorrecta: false }
     ]
   },
   {
-    oracion: 'La maestra explicó detalladamente la tarea antes de que terminara la clase y pidió que se entregue mañana.',
+    oracion: 'El viejo tren está ahora en un museo. Una sala espaciosa, limpia, cuidada. Ya no sale a trabajar, ya ha terminado el período de fiestas y conmemoraciones. Ahora está ahí quietecito esperando que llegue el atardecer, porque en esos momentos vienen sus amigos a visitarle.',
     opciones: [
-      { texto: 'La maestra explicó la tarea y dio la fecha de entrega.', esCorrecta: true },
-      { texto: 'Los estudiantes salieron rápido de clase.', esCorrecta: false }
+      { texto: 'El viejo tren está en un museo, ya no trabaja y recibe visitas por la tarde.', esCorrecta: true },
+      { texto: 'La sala donde está el tren es espaciosa, limpia y cuidada.', esCorrecta: false }
     ]
   },
   {
-    oracion: 'El perro buscó su pelota debajo de la mesa y luego la llevó al jardín para jugar solo.',
+    oracion: 'Voy de paseo con mis padres y mis hermanos. Andamos por la calle, por el paseo y por la plaza. Algunas veces subimos al autobús y vamos más lejos. Vamos al parque. Lo miro todo y pregunto a mis padres lo que no sé.',
     opciones: [
-      { texto: 'El perro encontró su pelota y jugó con ella.', esCorrecta: true },
-      { texto: 'La mesa estaba en el comedor.', esCorrecta: false }
+      { texto: 'Salgo de paseo con mi familia, observo todo y hago preguntas a mis padres.', esCorrecta: true },
+      { texto: 'A veces tomamos el autobús para ir más lejos, como al parque.', esCorrecta: false }
     ]
   }
 ]

@@ -9,6 +9,7 @@ import RegistroEstudiante from '@/pages/RegistroEstudiante.vue'
 import Novedades from '@/pages/Novedades.vue'
 import Tale from '@/pages/Tale.vue'
 import Ayuda from '@/pages/Ayuda.vue'
+import FichaEstudiante from '@/pages/FichaEstudiante.vue'
 import Indicaciones from '@/pages/Indicaciones.vue'
 import EjercicioLetras from '@/pages/EjercicioLetras.vue'
 import EjercicioSilabas from '@/pages/EjercicioSilabas.vue'
@@ -26,6 +27,7 @@ const routes = [
   { path: '/Novedades', component: Novedades },
   { path: '/Tale', component: Tale },
   { path: '/Ayuda', component: Ayuda },
+  {path: '/FichaEstudiante', component: FichaEstudiante },
   { path: '/Indicaciones', component: Indicaciones },
   { path: '/EjercicioLetras', component: EjercicioLetras },
   { path: '/EjercicioSilabas', component: EjercicioSilabas },

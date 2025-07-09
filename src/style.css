@@ -103,6 +103,9 @@
 .text_btn{
     font-size: 1.2rem !important;
 }
+.text_light{
+    color:var(--light)
+}
 
 
 a:link, a:visited{
@@ -155,6 +158,15 @@ a:link, a:visited{
 }
 .info-color {
   color: var(--info) !important;
+}
+.bg-error {
+  background-color: var(--error) !important;
+}
+.bg-alert {
+  background-color: var(--alert) !important;
+}
+.bg-confirm {
+  background-color: var(--confirm) !important;
 }
 .instruccion{
   font-family: 'OpenDyslexic';

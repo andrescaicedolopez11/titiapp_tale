@@ -19,10 +19,11 @@
             <p class="card-text">{{ calcularEdad(estudiante.fecha_nacimiento) }} años</p>
             <p class="card-text name_school">{{ estudiante.institucion }}</p>
             <div class="d-flex justify-content-center gap-3 mt-3">
-              <button type="button" class="btn btn_set" @click="irAIndicaciones">
-                <span class="material-symbols-outlined">troubleshoot</span>
-              </button>
-              <button type="button" class="btn btn_set">
+              <button type="button" class="btn btn_set" @click="irAIndicaciones(estudiante)">
+  <span class="material-symbols-outlined">troubleshoot</span>
+</button>
+
+              <button type="button" class="btn btn_set" @click="abrirFicha(estudiante.id)">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
               <button type="button" class="btn btn_set" @click="abrirPerfil(estudiante.id)">
@@ -41,10 +42,8 @@
 
     <!-- Modal de Perfil Estudiante -->
     <div
-      v-if="mostrarModal"
-      class="modal fade show d-block"
-      tabindex="-1"
-      style="background: rgba(0, 0, 0, 0.5);"
+      v-if="mostrarModal" class="modal fade show d-block" tabindex="-1"
+style="background: rgba(0, 0, 0, 0.5);"
       role="dialog"
     >
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -76,9 +75,11 @@ const estudiantes = ref([])
 const estudiantesFiltrados = ref([])
 const mostrarModal = ref(false)
 
-const irAIndicaciones = () => {
+const irAIndicaciones = (estudiante) => {
+  localStorage.setItem('nombreEstudiante', estudiante.nombres)
   router.push('/Indicaciones')
 }
+
 
 const cargarEstudiantes = async () => {
   const docenteId = localStorage.getItem('docente_id')

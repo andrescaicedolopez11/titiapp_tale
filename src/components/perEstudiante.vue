@@ -7,7 +7,7 @@
         <!-- Nombres -->
         <div class="mb-3">
           <label class="form-label">Nombres y apellidos</label>
-          <input v-model="form.nombres" type="text" class="form-control"/>
+          <input v-model="form.nombres" type="text" class="form-control" />
         </div>
 
         <!-- Fecha de nacimiento -->
@@ -19,7 +19,7 @@
         <!-- Unidad Educativa -->
         <div class="mb-3">
           <label class="form-label">Unidad Educativa</label>
-          <input v-model="form.unidadEducativa" type="text" class="form-control"/>
+          <input v-model="form.unidadEducativa" type="text" class="form-control" />
         </div>
 
         <!-- Provincia -->
@@ -27,7 +27,7 @@
           <label class="form-label">Provincia</label>
           <select v-model="form.provincia" class="form-select">
             <option disabled selected>Seleccione una provincia</option>
-            <option v-for="prov in provincias" :key="prov" :value="prov">{{ prov }}</option>
+            <option v-for="prov in provincias" :key="prov">{{ prov }}</option>
           </select>
         </div>
 
@@ -80,9 +80,18 @@
         <div class="mb-4">
           <label class="form-label">Seleccione un avatar</label>
           <div class="d-flex flex-wrap gap-3">
-            <label v-for="(avatar, index) in avatars" :key="index" style="cursor: pointer;" :class="{ 'border-primary': form.avatar === avatar }">
+            <label
+              v-for="(avatar, index) in avatars"
+              :key="index"
+              style="cursor: pointer;"
+              :class="{ 'border border-primary': form.avatar === avatar }"
+            >
               <input type="radio" :value="avatar" v-model="form.avatar" class="d-none" />
-              <img :src="avatar" class="user_image rounded-circle border-3 border_color mx-auto mt-1" :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }" />
+              <img
+                :src="`/src/assets/${avatar}`"
+                class="user_image rounded-circle border-3 border_color mx-auto mt-1"
+                :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }"
+              />
             </label>
           </div>
         </div>
@@ -101,10 +110,20 @@
 import { reactive, onMounted } from 'vue'
 import axios from 'axios'
 
-const props = defineProps({
-  id: String
-})
+const props = defineProps({ id: String })
 const emit = defineEmits(['cerrar', 'eliminado'])
+
+const provincias = [
+  'Azuay', 'Bolívar', 'Cañar', 'Carchi', 'Chimborazo', 'Cotopaxi', 'El Oro',
+  'Esmeraldas', 'Galápagos', 'Guayas', 'Imbabura', 'Loja', 'Los Ríos', 'Manabí',
+  'Morona Santiago', 'Napo', 'Orellana', 'Pastaza', 'Pichincha', 'Santa Elena',
+  'Santo Domingo', 'Sucumbíos', 'Tungurahua', 'Zamora Chinchipe'
+]
+
+const avatars = [
+  'user_1.jpg', 'user_2.jpg', 'user_3.jpg',
+  'user_4.jpg', 'user_5.jpg'
+]
 
 const form = reactive({
   nombres: '',
@@ -131,7 +150,7 @@ const cargarEstudiante = async () => {
       form.genero = estudiante.genero
       form.lenguaNativa = estudiante.lengua_nativa
       form.bilingue = estudiante.bilingue
-      form.avatar = estudiante.avatar
+      form.avatar = estudiante.avatar?.split('/').pop() || ''
     }
   } catch (error) {
     console.error('Error al cargar estudiante:', error)
@@ -146,13 +165,10 @@ const guardarCambios = () => {
 
 const eliminar = () => {
   alert('Registro eliminado')
-  emit('eliminado', props.id)  // 👈 emitimos el ID eliminado
-  emit('cerrar')               // 👈 cerramos el modal
+  emit('eliminado', props.id)
+  emit('cerrar')
 }
 </script>
-
-
-
 <style scoped>
 .btn_relleno {
   background-color: var(--complementary);

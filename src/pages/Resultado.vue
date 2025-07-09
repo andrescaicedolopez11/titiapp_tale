@@ -3,39 +3,29 @@
    <NavBar />
    
   <div class="container py-5" ref="resultadoPDF">
+        <h3 class="text-center burbank seccion_titulo">Informe de Resultados</h3>
+
     
-    <div class="text-end mb-2">
-      <strong>Fecha:</strong> {{ fechaActual }}
-    </div>
     <div class="mb-2">
+      <strong>Fecha:</strong> {{ fechaActual }}<br />
       <strong>Estudiante:</strong> {{ nombreEstudiante }}<br />
       <strong>Docente:</strong> {{ nombreDocente }}
     </div>
 
     <div class="text-center my-4">
-      <div class="bg-dark text-white rounded-circle d-inline-block px-4 py-3 fs-1">
+      <div class=" burbank box d-inline-block padding fs-1 rounded">
         {{ store.aciertos }}
       </div>
       <div class="mt-3">
-        <span
-          v-if="store.aciertos >= 8"
-          class="text-success fw-bold"
-        >
-          No requiere intervención con TitíApp©
-        </span>
-        <span
-          v-else-if="store.aciertos >= 6"
-          class="text-warning fw-bold"
-        >
+        <p v-if="store.aciertos >= 8" class="confirm-color burbank fw-bold" >
+          No requiere intervención con TitíApp© </p> 
+        <p v-else-if="store.aciertos >= 6" class="alert-color burbank fw-bold">
           Requiere seguimiento
-        </span>
-        <span
-          v-else
-          class="text-danger fw-bold"
-        >
+        </p>
+        <p v-else class="error-color burbank fw-bold">
           Requiere intervención con TitíApp©
-        </span>
-        <div class="mt-2 text-secondary">
+        </p>
+        <div class="mt-2 textcolor-color">
           Tiempo de ejecución:
           <span>{{ tiempoFormateado }}</span>
 
@@ -43,15 +33,15 @@
       </div>
     </div>
 
-    <div class="alert alert-info">
-      <h5 class="fw-bold">Aviso importante sobre la prueba diagnóstica basada en el Test TALE</h5>
+    <div class="p-5 card shadow padding_caja bg_container lh-base">
+      <h5 class="fw-bold ">Aviso importante sobre la prueba diagnóstica basada en el Test TALE</h5>
       <p>
         Esta herramienta no constituye un diagnóstico clínico, sino una prueba de cribado lectoescritor diseñada para identificar tempranamente posibles dificultades en los procesos de lectura y escritura. El resultado de la prueba puede ubicarse en uno de tres niveles:
       </p>
       <ul>
-        <li><strong>No requiere intervención</strong>,</li>
-        <li><strong>Requiere seguimiento</strong>,</li>
-        <li><strong>Requiere intervención con TitíApp©</strong>.</li>
+        <li class="confirm-color"><strong>No requiere intervención</strong>,</li>
+        <li class="alert-color"><strong>Requiere seguimiento</strong>,</li>
+        <li class="error-color"><strong>Requiere intervención con TitíApp©</strong>.</li>
       </ul>
       <p>
         Si el resultado obtenido corresponde a la categoría <strong>"Requiere intervención con TitíApp©"</strong>, se recomienda iniciar el proceso de acompañamiento psicopedagógico utilizando la herramienta interactiva TitíApp©, en coordinación con el docente o el equipo de apoyo psicopedagógico del estudiante. En el caso del resultado <strong>"Requiere seguimiento"</strong>, se sugiere realizar una observación pedagógica sistemática durante las semanas siguientes y aplicar nuevamente la prueba escolar. Solo si el resultado es <strong>"No requiere intervención"</strong>, se concluye una etapa del desarrollo académico habitual.
@@ -74,7 +64,7 @@
     </div>
 
     <div class="text-center mt-4">
-      <button class="btn btn-primary" @click="descargarPDF">Descargar informe en PDF</button>
+      <button class="btn btn_primario px-4 burbank text_btn" @click="descargarPDF">Descargar Informe</button>
     </div>
     <p class="margin_bottom">&NonBreakingSpace;</p>
   </div>
@@ -88,6 +78,8 @@ import Footer from '@/components/Footer.vue'
 import { useEvaluacionStore } from '@/stores/evaluacionStore'
 import { ref, computed, onMounted } from 'vue'
 import html2pdf from 'html2pdf.js'
+
+
 
 const store = useEvaluacionStore()
 const resultadoPDF = ref(null)
@@ -115,7 +107,6 @@ const fechaActual = new Date().toLocaleDateString('es-EC', {
 
 const tiempoFormateado = computed(() => {
   const total = store.tiempoTotal
-  if (!store.tiempoInicio || !store.tiempoFin || total <= 0) return 'No disponible'
   const minutos = Math.floor(total)
   const segundos = Math.round((total - minutos) * 60)
   return `${minutos} min ${segundos} s`
@@ -125,7 +116,7 @@ const descargarPDF = () => {
   const element = resultadoPDF.value
   const opt = {
     margin: 0.5,
-    filename: `Informe_${nombreEstudiante.value.replace(/\s+/g, '_')}.pdf`,
+    filename: `Informe_Resultados.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 2 },
     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -136,13 +127,12 @@ const descargarPDF = () => {
 
 
 <style scoped>
-.bg-dark.rounded-circle {
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 50%;
+
+.box{
+  background-color: var(--textcolor)!important;
+  color:var(--light)!important;
+}
+.padding{
+  padding:2rem
 }
 </style>
