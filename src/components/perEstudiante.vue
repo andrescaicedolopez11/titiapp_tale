@@ -66,8 +66,8 @@
           <div class="d-flex flex-wrap gap-3">
             <label v-for="(avatar, index) in avatars" :key="index" style="cursor: pointer;" :class="{ 'border border-primary': form.avatar === avatar }">
               <input type="radio" :value="avatar" v-model="form.avatar" class="d-none" />
-              <img :src="`/src/assets/${avatar}`" alt="Imagen de usuario" class="user_image rounded-circle border-3 border_color mx-auto mt-1" :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }"
-              />
+              <img :src="`https://titiapp.ec/tale/${avatar}`" alt="Imagen de usuario" class="user_image rounded-circle border-3 border_color mx-auto mt-1" :style="{ opacity: form.avatar === avatar ? 1 : 0.4 }" />
+              
             </label>
           </div>
         </div>
