@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5 d-flex justify-content-center align-items-center min-vh-50">
-    <div class="card shadow padding_caja bg_container" style="max-width: 600px; width: 100%;">
+    <div class="card shadow padding_caja bg_container size">
       <h4 class="text-center mb-4 burbank seccion_titulo">Inicio de sesión</h4>
 
       <form @submit.prevent="validarUsuario">
@@ -25,29 +25,26 @@
         </div>
 
         <div class="mt-4 pb-4 d-flex justify-content-center">
+          <!--Botón Iniciar con Gmail-->  
           <button type="button" class="btn btn_gmail">
             <img src="@/assets/gmail_icon.svg" alt="Logo TitíApp" class="align-middle me-2 img-fluid mb-1" style="max-height: 24px;">
             <span class="burbank text_btn">Iniciar con Gmail</span>
           </button>
         </div>
-
         <div class="text-center">
           <span class="small">
             ¿No tienes cuenta?
+              <!--Botón Registrase-->  
             <router-link to="/RegistroDocente">
               <span class="vinculo_btn">Registrarme</span>
             </router-link>
-        
           </span>
         </div>
          <p class="margin_bottom">&NonBreakingSpace;</p>
       </form>
     </div>
-    
   </div>
-  
-   
-</template>
+ </template>
 
 <script setup>
 import { ref } from 'vue'
@@ -57,7 +54,6 @@ import { useRouter } from 'vue-router'
 const usuario = ref('')
 const contrasena = ref('')
 const router = useRouter()
-
 const validarUsuario = async () => {
   try {
     const response = await axios.get('https://mock.apidog.com/m1/982903-968444-default/docentes')
@@ -79,12 +75,9 @@ const validarUsuario = async () => {
     alert('Error de conexión con la API')
   }
 }
-
 const recuperarContrasena = () => {
   alert('Sus datos de acceso se han enviado a su correo institucional.')
 }
-
-
 </script>
 
 <style scoped>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Navegación específica para ejercicios -->
     <NavBarIndicaciones />
     <Instrucciones />
     <Footer />
@@ -12,7 +11,6 @@ import NavBarIndicaciones from '@/components/NavBarIndicaciones.vue'
 import Instrucciones from '@/components/Instrucciones.vue'
 import Footer from '@/components/Footer.vue'
 </script>
-
 
 <style scoped>
 .card {
@@ -30,6 +28,5 @@ import Footer from '@/components/Footer.vue'
 }
 .btn_width{
   width: 20% !important;
-
 }
 </style>

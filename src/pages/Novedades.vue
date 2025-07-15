@@ -14,12 +14,10 @@
         02 de junio de 2025</h6>
       <br>
       <p class="text-justify txt_size">
-        
         La plataforma digital TitíApp©, desarrollada por la Universidad Indoamérica, se ha convertido en una herramienta clave para mejorar el proceso de aprendizaje en lectoescritura en estudiantes de educación básica. Gracias a su enfoque lúdico e interactivo, integra recursos audiovisuales, actividades dinámicas y un entorno gráfico inspirado en la geografía y cultura del Ecuador. Esta aplicación permite detectar dificultades lectoras en etapas tempranas, facilitando intervenciones pedagógicas más efectivas. Además, su diseño centrado en el usuario favorece la comprensión y el compromiso del niño con el proceso de evaluación, transformando una actividad tradicionalmente invasiva en una experiencia significativa.
       </p>
     </div>
   </div>
-
   <!-- Noticia 2 -->
   <div class="d-flex flex-wrap mb-4 shadow p-4">
     <div class="col-md-3 mb-3 mb-md-0 text-center">
@@ -34,7 +32,6 @@
       </p>
     </div>
   </div>
-
   <!-- Noticia 3 -->
   <div class="d-flex flex-wrap mb-4 shadow p-4">
     <div class="col-md-3 mb-3 mb-md-0 text-center">
@@ -54,22 +51,21 @@
 <Footer />
 </div>
 </template>
+
 <script setup>
 import NavBar from '@/components/NavBar.vue'
 import Footer from '@/components/Footer.vue'
 </script>
-<style scoped>
 
+<style scoped>
 .bg_color{
   background-color: red;
-  
 }
 .txt_size_titulo{
   font-size: 1.5rem;
-   color: var(--primary);
+  color: var(--primary);
 }
 .txt_size{
   font-size: 0.8rem;
 }
-
 </style>

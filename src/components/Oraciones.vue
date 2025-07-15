@@ -1,23 +1,19 @@
 <template>
   <div class="container py-5 text-center">
     <h4 class="fw-bold text-orange mb-2 burbank seccion_titulo">Instrucción</h4>
-
     <!-- Ícono de audio -->
     <div class="mb-4">
       <span class="material-symbols-outlined fs-2 seccion_titulo" style="cursor: pointer;" @click="reproducirAudio">
         volume_up
       </span>
     </div>
-
-     <!-- Texto de instrucción -->
     <p class="fs-5 py-2 pb-5">
       Selecciona la idea principal de la oración.
     </p>
-    <!-- Oración y opciones -->
     <div v-if="ejercicioActual < ejercicios.length" class="mt-4 ">
       <p class="fs-5 border pt-2 py-2 instruccion">{{ ejercicios[ejercicioActual].oracion }}</p>
-
       <div class="d-flex flex-column align-items-center gap-3 mt-5 ">
+        <!-- Botón para Finalizar Diagnóstico -->
         <button
           v-for="(opcion, index) in ejercicios[ejercicioActual].opciones" :key="index" class="ejercicio-box padding " @click="evaluar(opcion)">
           {{ opcion.texto }}
@@ -32,18 +28,14 @@
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEvaluacionStore } from '@/stores/evaluacionStore'
+import audioOracion from '@/assets/audio/audio_oracion.mp3'
 
 const router = useRouter()
 const store = useEvaluacionStore()
-
-
-import audioOracion from '@/assets/audio/audio_oracion.mp3'
-
 const audio = new Audio(audioOracion)
 const reproducirAudio = () => {
   audio.play()
 }
-
 const ejercicios = [
   {
     oracion: 'Esa hilera de puntitos negros y movedizos son hormigas. Están muy atareadas. Tienen que aprovechar el verano y recoger provisiones para los días tan oscuros del invierno. En verano recogen toda la comida que pueden y la meten en su nido.',
@@ -67,19 +59,15 @@ const ejercicios = [
     ]
   }
 ]
-
 const ejercicioActual = ref(0)
-
 const evaluar = (opcion) => {
 if (opcion.esCorrecta) {
     store.registrarAcierto()
   } else {
     store.registrarError()
   }
-
   ejercicioActual.value++
 }
-
 watch(ejercicioActual, (nuevoValor) => {
   if (nuevoValor >= ejercicios.length) {
     router.push('/Resultado')
@@ -88,9 +76,7 @@ watch(ejercicioActual, (nuevoValor) => {
 </script>
 
 <style scoped>
-
 .padding{
-    
     width:auto;
     font-size: 1rem;
     padding: 1rem 4rem;

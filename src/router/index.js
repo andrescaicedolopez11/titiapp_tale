@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Importar todas las páginas necesarias
 import Home from '@/pages/Home.vue'
 import Sesion from '@/pages/Sesion.vue'
 import RegistroDocente from '@/pages/RegistroDocente.vue'
@@ -37,7 +36,6 @@ const routes = [
 ]
 
 const router = createRouter({
-  
   history: createWebHistory(),
   routes,
 })

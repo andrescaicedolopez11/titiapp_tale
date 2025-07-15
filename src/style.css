@@ -26,29 +26,21 @@
   html {
   scroll-behavior: smooth;
 }
-
 ::-webkit-scrollbar {
   width: 10px;
 }
-
-
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 4px; 
   border-radius: 0px ;
 	 background: var(--secondary);
 }
-
-
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 4px;
 }
-
-
 ::-webkit-scrollbar-thumb:hover {
   background:var(--complementary);
 }
-
 .header1 {
   font-size: 1.5rem;
     font-weight:600;
@@ -77,7 +69,6 @@
     font-family: 'Burbank', sans-serif !important;
     font-size: 1.5rem;
 }
-
 .margin_bottom{
     margin-bottom: 4rem;
 }
@@ -85,13 +76,10 @@
     font-family: 'OpenDyslexic', sans-serif !important;
     font-size: 2rem !important;
 }
-
-
 .seccion_titulo{
     color: var(--complementary);
     font-size: 2rem;
 }
-
 .form-label{
     font-size: 0.7rem;
     color: var(--text);
@@ -106,13 +94,10 @@
 .text_light{
     color:var(--light)
 }
-
-
 a:link, a:visited{
     text-decoration: none;
     color:var(--textcolor);
 }
-
 .btn_primario{
     background-color: var(--complementary)!important;
     color:var(--light)!important;
@@ -190,7 +175,9 @@ a:link, a:visited{
   border-radius: 0.2rem;
   padding: 1rem;
 }
-
 .ejercicio-box:hover {
   background-color: rgb(254, 215, 160, 0.50) !important;
 }
+.size{
+  max-width: 600px;
+  width: 100%;}

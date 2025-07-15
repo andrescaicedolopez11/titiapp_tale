@@ -1,31 +1,25 @@
 <template>
   <div class="container my-5">
     <Buscador @buscar="filtrarEstudiantes" />
-
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2">
-      <div
-        class="col"
-        v-for="estudiante in estudiantesFiltrados"
-        :key="estudiante.id"
-      >
+      <div class="col" v-for="estudiante in estudiantesFiltrados" :key="estudiante.id">
         <div class="card h-100">
-          <img
-            :src="estudiante.avatar"
-            alt="Imagen de perfil de usuario"
-            class="user_image rounded-circle border-3 border_color mx-auto d-block mt-3"
+          <img :src="estudiante.avatar" alt="Imagen de perfil de usuario" class="user_image rounded-circle border-3 border_color mx-auto d-block mt-3"
           />
           <div class="card-body text-center">
             <h3 class="card-title name">{{ estudiante.nombres }}</h3>
             <p class="card-text">{{ calcularEdad(estudiante.fecha_nacimiento) }} años</p>
             <p class="card-text name_school">{{ estudiante.institucion }}</p>
             <div class="d-flex justify-content-center gap-3 mt-3">
+              <!-- Botón Diagnóstico -->
               <button type="button" class="btn btn_set" @click="irAIndicaciones(estudiante)">
                 <span class="material-symbols-outlined">troubleshoot</span>
               </button>
-
+              <!-- Botón Reporte -->
               <button type="button" class="btn btn_set" @click="abrirFicha(estudiante)">
                 <span class="material-symbols-outlined">lab_profile</span>
               </button>
+              <!-- Botón Perfil -->
               <button type="button" class="btn btn_set" @click="abrirPerfil(estudiante.id)">
                 <span class="material-symbols-outlined">settings</span>
               </button>
@@ -35,18 +29,12 @@
       </div>
     </div>
     <p class="margin_bottom">&NonBreakingSpace;</p>
-
-    <!-- Modal de Perfil Estudiante -->
-    <div
-      v-if="mostrarModal"
-      class="modal fade show d-block"
-      tabindex="-1"
-      style="background: rgba(0, 0, 0, 0.5);"
-      role="dialog"
-    >
+    <!-- Ventana Modal de Perfil Estudiante -->
+    <div v-if="mostrarModal" class="modal fade show d-block" tabindex="-1" style="background: rgba(0, 0, 0, 0.5);" role="dialog">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content p-0">
           <div class="text-end">
+            <!-- Botón para Cerrar Ventana Modal -->
             <button type="button" class="btn btn-sm btn-light m-2" @click="cerrarModal">
               <span class="material-symbols-outlined">cancel</span>
             </button>
@@ -72,18 +60,15 @@ const estudiantes = ref([])
 const estudiantesFiltrados = ref([])
 const mostrarModal = ref(false)
 const modalComponent = shallowRef(null)
-
 const irAIndicaciones = (estudiante) => {
   localStorage.setItem('nombreEstudiante', estudiante.nombres)
   router.push('/Indicaciones')
 }
-
 const abrirFicha = (estudiante) => {
   localStorage.setItem('estudianteSeleccionado', JSON.stringify(estudiante))
   modalComponent.value = FichaEstudiante
   mostrarModal.value = true
 }
-
 const cargarEstudiantes = async () => {
   const docenteId = localStorage.getItem('docente_id')
   if (!docenteId) return
@@ -99,17 +84,15 @@ const cargarEstudiantes = async () => {
           avatar: `https://titiapp.ec/tale/${nombreArchivo}`
         }
       })
-
     const temporales = JSON.parse(localStorage.getItem('estudiantes_temporales') || '[]')
       .filter(e => e.docente_id == docenteId)
-
+      
     estudiantes.value = [...dataApi, ...temporales]
     estudiantesFiltrados.value = estudiantes.value
   } catch (error) {
     console.error('Error al cargar estudiantes:', error)
   }
 }
-
 const calcularEdad = (fechaNacimiento) => {
   const hoy = new Date()
   const nacimiento = new Date(fechaNacimiento)
@@ -120,33 +103,27 @@ const calcularEdad = (fechaNacimiento) => {
   }
   return edad
 }
-
 const filtrarEstudiantes = (termino) => {
   const terminoNormalizado = termino.toLowerCase()
   estudiantesFiltrados.value = estudiantes.value.filter(est =>
     est.nombres.toLowerCase().includes(terminoNormalizado)
   )
 }
-
 const abrirPerfil = (id) => {
   idSeleccionado.value = id
   modalComponent.value = perEstudiante
   mostrarModal.value = true
 }
-
 const eliminarEstudiante = (id) => {
   estudiantes.value = estudiantes.value.filter(e => e.id !== id)
   estudiantesFiltrados.value = estudiantesFiltrados.value.filter(e => e.id !== id)
-
-  const actualizados = estudiantes.value.filter(e => e.id.toString().startsWith('1'))
+const actualizados = estudiantes.value.filter(e => e.id.toString().startsWith('1'))
   localStorage.setItem('estudiantes_temporales', JSON.stringify(actualizados))
 }
-
 const cerrarModal = () => {
   mostrarModal.value = false
   modalComponent.value = null
 }
-
 onMounted(cargarEstudiantes)
 </script>
 

@@ -34,7 +34,6 @@
       <p class="mb-0 text-mensaje">En caso de requerir, cierra tu sesión para dar paso a otro docente en su proceso de evaluación con Test TALE.</p>
     </div>
   </div>
-
   <h5 class="fw-bold py-5 pb-4 primary-color">Acciones para Estudiantes</h5>
   <div class="border rounded p-3 mb-3 d-flex align-items-center">
     <div class="me-3">
@@ -69,14 +68,12 @@
     </div>
   </div>
 </div>
-
 </template>
 
 <script setup>
 </script>
 
 <style scoped>
-
 .text-mensaje {
   font-size: 0.9rem;
   color: var(--text-color);
@@ -87,9 +84,7 @@
   padding: 0rem 0rem 0rem 2rem !important;
   color: var(--support);
 }
-
 .modal-content {
   overflow: hidden !important;
 }
-
 </style>

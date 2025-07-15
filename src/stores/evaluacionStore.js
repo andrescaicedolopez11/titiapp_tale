@@ -16,7 +16,7 @@ export const useEvaluacionStore = defineStore('evaluacion', {
         typeof state.tiempoFin === 'number' &&
         state.tiempoFin > state.tiempoInicio
       ) {
-        return (state.tiempoFin - state.tiempoInicio) / (1000 * 60) // minutos
+        return (state.tiempoFin - state.tiempoInicio) / (1000 * 60) 
       }
       return 0
     }

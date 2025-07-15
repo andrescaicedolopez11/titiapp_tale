@@ -11,7 +11,6 @@
 </script>
 
 <style scoped>
-
 .mensaje{
   padding: 1rem;
   text-align: center;

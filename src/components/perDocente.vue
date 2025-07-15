@@ -1,36 +1,25 @@
 <template>
   <div class="container d-flex justify-content-center align-items-center my-2 mb-5">
-    <div class="card shadow p-4 padding_caja bg_container" style="max-width: 600px; width: 100%;">
-      
-      <!-- Título -->
-      <h4 class="text-center mb-4 burbank seccion_titulo">Perfil del Docente</h4>
-
+    <div class="card shadow p-4 padding_caja bg_container size">
+       <h4 class="text-center mb-4 burbank seccion_titulo">Perfil del Docente</h4>
+      <!-- Formulario Docente -->
       <form @submit.prevent="guardarCambios">
-        <!-- Nombres y Apellidos -->
         <div class="mb-3">
           <label class="form-label">Nombre completo</label>
           <input type="text" class="form-control" id="nombreper" v-model="docente.nombres" placeholder="Ej. Carlos Pérez Gómez">
         </div>
-
-        <!-- Cédula -->
         <div class="mb-3">
           <label class="form-label">Cédula de identidad</label>
           <input type="text" class="form-control" id="cedulaper" v-model="docente.cedula" placeholder="ej. 1723454321">
         </div>
-
-        <!-- Correo -->
         <div class="mb-3">
           <label class="form-label">Correo electrónico</label>
           <input type="email" class="form-control" id="correoper" v-model="docente.correo">
         </div>
-
-        <!-- Unidad educativa -->
         <div class="mb-3">
           <label class="form-label">Unidad Educativa</label>
           <input type="text" class="form-control" id="unidadper" v-model="docente.institucion">
         </div>
-
-        <!-- Provincia -->
         <div class="mb-3">
           <label class="form-label">Provincia</label>
           <select class="form-select" id="provinciaper" v-model="docente.provincia">
@@ -38,43 +27,30 @@
             <option v-for="prov in provincias" :key="prov">{{ prov }}</option>
           </select>
         </div>
-
-        <!-- Ciudad -->
         <div class="mb-3">
           <label class="form-label">Ciudad</label>
           <input type="text" class="form-control" id="ciudadper" v-model="docente.ciudad">
         </div>
-
-        <!-- Subtítulo -->
         <div class="mt-5 mb-4 text-center">
           <h6 class="txt_primary">Datos para inicio de sesión:</h6>
         </div>
-
-        <!-- Usuario -->
         <div class="mb-3">
           <label class="form-label">Usuario</label>
           <input type="text" class="form-control" id="usuarioper" v-model="docente.usuario">
         </div>
-
-        <!-- Contraseña -->
         <div class="mb-4">
           <label class="form-label">Contraseña</label>
           <input type="text" class="form-control" id="contrasenaper" v-model="docente.contrasena">
         </div>
-
-        <!-- Botones -->
         <div class="d-flex justify-content-center">
+          <!-- Botones de Formulario -->
          <!-- <button type="button" class="btn burbank text_btn btn_borde m-2" @click="$emit('cerrar')">Volver</button>-->
           <button type="button" class="btn burbank text_btn btn_borde m-2" @click="eliminar">Eliminar</button>
           <button type="submit" class="btn burbank text_btn btn_relleno m-2">Guardar</button>
         </div>
-
       </form>
-       
-    </div>
-    
+     </div>
   </div>
-  
 </template>
 
 <script setup>
@@ -84,14 +60,12 @@ import { useRouter } from 'vue-router'
 
 const emit = defineEmits(['cerrar'])
 const router = useRouter()
-
 const provincias = [
   'Azuay', 'Bolívar', 'Cañar', 'Carchi', 'Chimborazo', 'Cotopaxi', 'El Oro',
   'Esmeraldas', 'Galápagos', 'Guayas', 'Imbabura', 'Loja', 'Los Ríos', 'Manabí',
   'Morona Santiago', 'Napo', 'Orellana', 'Pastaza', 'Pichincha', 'Santa Elena',
   'Santo Domingo', 'Sucumbíos', 'Tungurahua', 'Zamora Chinchipe'
 ]
-
 const docente = ref({
   id: '',
   nombres: '',
@@ -103,7 +77,6 @@ const docente = ref({
   usuario: '',
   contrasena: ''
 })
-
 onMounted(async () => {
   try {
     const id = localStorage.getItem('docente_id')
@@ -126,12 +99,10 @@ onMounted(async () => {
     console.error('Error al obtener docente:', error)
   }
 })
-
 const guardarCambios = () => {
   alert('Cambios registrados')
 
 }
-
 const eliminar = () => {
   alert('Registro borrado')
   limpiarFormulario()
@@ -139,7 +110,6 @@ const eliminar = () => {
     router.push('/')
   }, 1000)
 }
-
 const limpiarFormulario = () => {
   docente.value = {
     id: '',
@@ -154,7 +124,6 @@ const limpiarFormulario = () => {
   }
 }
 </script>
-
 
 <style scoped>
 .btn_relleno {

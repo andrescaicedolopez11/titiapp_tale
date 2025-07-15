@@ -1,15 +1,12 @@
 <template>
   <div>
-    <!-- Sección buscador -->
     <div class="container my-5 bg_buscador py-3" v-if="!oculto">
       <div class="row justify-content-center align-items-center g-2">
-        <!-- Título -->
-        <div class="col-12 col-md-2 text-center">
+          <div class="col-12 col-md-2 text-center">
           <h3 class="burbank seccion_titulo">Estudiantes</h3>
         </div>
-
-        <!-- Buscador -->
         <div class="col-12 col-md-8">
+           <!-- Sección buscador -->
           <form class="d-flex gap-2" @submit.prevent>
             <input
               class="form-control"
@@ -21,7 +18,6 @@
             />
           </form>
         </div>
-
         <!-- Botón Añadir -->
         <div class="col-12 col-md-1 text-center">
           <button type="button" class="btn btn_add center_icon" @click="irARegistro">
@@ -41,11 +37,9 @@ import { useRouter } from 'vue-router'
 const busqueda = ref('')
 const emit = defineEmits(['buscar'])
 const router = useRouter()
-
 const emitirBusqueda = () => {
   emit('buscar', busqueda.value.trim().toLowerCase())
 }
-
 const irARegistro = () => {
   router.push('/RegistroEstudiante')
 }
