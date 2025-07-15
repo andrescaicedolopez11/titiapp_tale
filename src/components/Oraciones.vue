@@ -1,6 +1,6 @@
 <template>
   <div class="container py-5 text-center">
-    <h4 class="fw-bold text-orange mb-2 burbank seccion_titulo">Instrucción</h4>
+    <h4 class="text-orange mb-2 burbank seccion_titulo">Instrucción</h4>
     <!-- Ícono de audio -->
     <div class="mb-4">
       <span class="material-symbols-outlined fs-2 seccion_titulo" style="cursor: pointer;" @click="reproducirAudio">

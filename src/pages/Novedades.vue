@@ -9,7 +9,7 @@
       <img src="@/assets/noticia_1.webp" class="img-fluid rounded shadow" alt="Noticia 1">
     </div>
     <div class="col-md-8 ps-md-4">
-      <h4 class="fw-bold burbank seccion_titulo txt_size_titulo">TitíApp impulsa la transformación educativa en Ecuador</h4>
+      <h4 class="burbank seccion_titulo txt_size_titulo">TitíApp impulsa la transformación educativa en Ecuador</h4>
       <h6 class="header6">
         02 de junio de 2025</h6>
       <br>
@@ -24,7 +24,7 @@
       <img src="@/assets/noticia_2.webp" class="img-fluid rounded shadow" alt="Noticia 1">
     </div>
     <div class="col-md-8 ps-md-1">
-      <h4 class="fw-bold burbank seccion_titulo txt_size_titulo">TitíApp ya beneficia a decenas de instituciones y cientos de niños en Ecuador</h4>
+      <h4 class="burbank seccion_titulo txt_size_titulo">TitíApp ya beneficia a decenas de instituciones y cientos de niños en Ecuador</h4>
       <h6 class="header6">25 de mayo de 2025</h6>
       <br>
       <p class="text-justify txt_size">
@@ -38,7 +38,7 @@
       <img src="@/assets/noticia_3.webp" class="img-fluid rounded shadow" alt="Noticia 1">
     </div>
     <div class="col-md-8 ps-md-1">
-      <h4 class="fw-bold burbank seccion_titulo txt_size_titulo">Avanza el proyecto de adaptación de TitíApp al contexto colombiano</h4>
+      <h4 class="burbank seccion_titulo txt_size_titulo">Avanza el proyecto de adaptación de TitíApp al contexto colombiano</h4>
       <h6 class="header6">11 de abril de 2025</h6>
       <br>
       <p class="text-justify txt_size">

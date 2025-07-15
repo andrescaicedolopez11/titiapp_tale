@@ -13,12 +13,12 @@
         {{ store.aciertos }}
       </div>
       <div class="mt-3">
-        <p v-if="store.aciertos >= 8" class="confirm-color burbank fw-bold" >
+        <p v-if="store.aciertos >= 8" class="confirm-color burbank" >
           No requiere intervención con TitíApp© </p> 
-        <p v-else-if="store.aciertos >= 6" class="alert-color burbank fw-bold">
+        <p v-else-if="store.aciertos >= 6" class="alert-color burbank">
           Requiere seguimiento
         </p>
-        <p v-else class="error-color burbank fw-bold">
+        <p v-else class="error-color burbank">
           Requiere intervención con TitíApp©
         </p>
         <div class="mt-2 textcolor-color">
